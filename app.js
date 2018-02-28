@@ -1,17 +1,21 @@
-/*
- * Create a list that holds all of your cards
+
+
+ // Create a list that holds all of your cards
+
+ let cards = ["fa-diamond","fa-paper-plane-o", "fa-bolt", "fa-cube", "fa-anchor", 
+  "fa-leaf", "fa-bicycle", "fa-bomb","fa-diamond","fa-paper-plane-o","fa-bolt","fa-cube",
+  "fa-anchor","fa-leaf","fa-bicycle","fa-bomb"]
 
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+  let numberOfCards = cards.length
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+  let single = document.querySelectorAll('.card i')
 
+   
+	
+//Display the cards on the page
+ //  - shuffle the list of cards using the provided "shuffle" method 
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -28,36 +32,77 @@ return array
     
 }
 
- let cards = ["fa-diamond","fa-paper-plane-o", "fa-bolt", "fa-cube", "fa-anchor", 
-  "fa-leaf", "fa-bicycle", "fa-bomb"]
-
   cards= shuffle(cards)
 
 
-for (i=0; i<cards.length; i++){
-
-	let single = document.querySelectorAll('.fa')
+// loop through each card and create its HTML
 
 for (z=0; z<single.length; z++){
 
-	single[z].classList.add(cards[i])
-}
 
+// add each card's HTML to the page
 
+	single[z].classList.add(cards[z])
+     
+     }
 
-}
 
 
 let showCard = document.querySelectorAll('.deck')
 
+
+
+
+	//set up the event listener for a card. If a card is clicked://
+
 for (var i = 0; i <showCard.length; i++) {
+
   showCard[i].addEventListener('click', flipCard, true);
-}  
+
+}
+
+	//display the card's symbol (put this functionality in another function that you call from this one)//
+
+
+
+  let openCards=[]
 
 function flipCard(e){
 	
 	e.target.classList.toggle('match')
-	}
+  openCards.push(e.target)
+
+  let first = openCards[0].childNodes
+
+  console.log(first.className)
+}
+
+
+setTimeout(function hideCards(){
+
+let flopCard = document.querySelectorAll('li')
+
+if (flopCard[0].className !== flopCard[1].className){
+
+for(let t = 0; t <flopCard.length; t++) {
+
+flopCard[t].classList.remove('match')
+}
+}
+
+}, 2000)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -71,3 +116,5 @@ function flipCard(e){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+
