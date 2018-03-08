@@ -12,6 +12,8 @@
 
   let single = document.querySelectorAll('.card i')
 
+  let classes = document.querySelectorAll('i .fa')
+
    
 	
 //Display the cards on the page
@@ -28,7 +30,7 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
 
-return array
+    return array
     
 }
 
@@ -42,39 +44,81 @@ for (z=0; z<single.length; z++){
 
 // add each card's HTML to the page
 
-	single[z].classList.add(cards[z])
-     
-     }
+  single[z].classList.add(cards[z])
 
+  let solution = (single[z].className)
+    
+}
 
 
 let showCard = document.querySelectorAll('.deck')
 
-
-
+let showSingle = document.querySelectorAll('.deck .card')
 
 	//set up the event listener for a card. If a card is clicked://
 
-for (var i = 0; i <showCard.length; i++) {
+for (var i = 0; i <showSingle.length; i++) {
 
-  showCard[i].addEventListener('click', flipCard, true);
+  showSingle[i].addEventListener('click', flipCard, true);
 
 }
 
 	//display the card's symbol (put this functionality in another function that you call from this one)//
 
+let oneCard= document.querySelectorAll('.card')
 
-
-  let openCards=[]
-
-function flipCard(e){
+function flipCard(e){ 
 	
-	e.target.classList.toggle('match')
-  openCards.push(e.target)
+event.target.classList.toggle('match')
 
-  let first = openCards[0].childNodes
+let openCards=[]
 
-  console.log(first.className)
+for (let i=0; i<oneCard.length; i++){
+
+
+if (oneCard[i].classList.contains("match")){
+
+openCards.push(oneCard[i].children[0].className)
+}
+}
+console.log(openCards)
+
+
+// Matching 2 cards
+if (openCards[0]===openCards[1] && openCards.length>1){
+  alert('GOOD MATCH')
+
+  let canPlay= true
+
+//Not matching
+
+}else if (openCards[0]!==openCards[1] && openCards.length===2){
+
+ let canPlay= false
+ restart()
+}
+}
+
+function restart(){
+  alert('ONE LIFE LESS')
+
+  for (var i = 0; i <showSingle.length; i++) {
+
+  showSingle[i].classList.remove('match')
+
+}
+}
+
+
+/*
+
+
+if (openCards.length===1){
+
+console.log('match')
+
+} else if (openCards.length===2) {
+  console.log('not match!')
 }
 
 
@@ -95,15 +139,90 @@ flopCard[t].classList.remove('match')
 
 
 
+/*
+function destroyer(arr) {
+
+var final = arr.filter(function(number){
+
+      return number>2 
+
+
+})
+
+var total= [];
+for (var i=0; i<final.length;i++){
+
+if (total.indexOf(final[i])!== -1){
+
+total.push(final[i])
+
+}
+}
+
+  // Remove all the values
+  console.log(total);
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+/*
+function mutation(arr) {
+
+  var total = []
+
+  for (var i=0; i<arr[1].length; i++){
+
+    total.push(arr[1][i])
+
+    if (arr[0].indexOf(total[i])!== -1){
+     console.log(total.join('').toLowerCase())
+    }
+  }
 
 
 
 
+ 
+}
+
+mutation(["hello", "DFDFey"]);
 
 
 
+*/
+
+/*
+
+function mutation(arr) {
+
+  var total = []
+
+  var splitTarget = arr[1].split('')
+
+  var splitOrigin = arr[0].split('')
+
+  for (var i=0; i<splitTarget.length; i++){
+
+    if (splitOrigin.indexOf(splitTarget[i])!== -1){
+
+    total.push(splitTarget[i])
 
 
+    }
+
+
+
+}
+ 
+
+ console.log(total)
+ 
+}
+
+mutation(["hello", "Hey"]);
+
+
+*/
 
 
 /*
