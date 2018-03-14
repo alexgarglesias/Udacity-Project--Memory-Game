@@ -61,6 +61,7 @@ for (var i = 0; i <showSingle.length; i++) {
 
   showSingle[i].addEventListener('click', flipCard, true);
 
+
 }
 
 	//display the card's symbol (put this functionality in another function that you call from this one)//
@@ -71,7 +72,10 @@ function flipCard(e){
 	
 event.target.classList.toggle('match')
 
+
 let openCards=[]
+
+
 
 for (let i=0; i<oneCard.length; i++){
 
@@ -80,8 +84,15 @@ if (oneCard[i].classList.contains("match")){
 
 openCards.push(oneCard[i].children[0].className)
 }
-}
+
+
 console.log(openCards)
+
+
+}
+
+
+
 
 
 // Matching 2 cards
@@ -90,27 +101,35 @@ if (openCards[0]===openCards[1] && openCards.length>1){
 
   let canPlay= true
 
+
+
 //Not matching
 
 }else if (openCards[0]!==openCards[1] && openCards.length===2){
 
- let canPlay= false
- restart()
-}
-}
 
-function restart(){
-  alert('ONE LIFE LESS')
+ alert('Wrong match')
 
-  for (var i = 0; i <showSingle.length; i++) {
+ for (var i = 0; i <showSingle.length; i++) {
 
   showSingle[i].classList.remove('match')
+}
+
+
+
+  
 
 }
+
 }
+
+
 
 
 /*
+ 
+
+function restart(){
 
 
 if (openCards.length===1){
