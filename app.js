@@ -14,6 +14,12 @@
 
   let classes = document.querySelectorAll('i .fa')
 
+  let stars = document.querySelectorAll('.stars .fa')
+
+  let moves = document.querySelector('.moves')
+
+
+
    
 	
 //Display the cards on the page
@@ -68,6 +74,7 @@ for (var i = 0; i <showSingle.length; i++) {
 
 let oneCard= document.querySelectorAll('.card')
 
+
 function flipCard(e){ 
 	
 event.target.classList.toggle('match')
@@ -86,7 +93,7 @@ openCards.push(oneCard[i].children[0].className)
 }
 
 
-console.log(openCards)
+
 
 
 }
@@ -96,10 +103,13 @@ console.log(openCards)
 
 
 // Matching 2 cards
+
 if (openCards[0]===openCards[1] && openCards.length>1){
   alert('GOOD MATCH')
 
-  let canPlay= true
+ setTimeout(function(){
+
+ }, 2500)
 
 
 
@@ -107,27 +117,52 @@ if (openCards[0]===openCards[1] && openCards.length>1){
 
 }else if (openCards[0]!==openCards[1] && openCards.length===2){
 
-
+  setTimeout(function(){
  alert('Wrong match')
+  },1000)
 
+ setTimeout(function(){
  for (var i = 0; i <showSingle.length; i++) {
 
   showSingle[i].classList.remove('match')
+
+
+// Remove one Star
+
+  for (var z = 0; z <stars.length; z++) {
+
+
+   stars[0].classList.remove('fa-star')
+
+
+// decrease moves
+
+moves.textContent = 2
+
+}
+}
+  },2000)
+
+
+}
+
 }
 
 
 
-  
 
-}
 
-}
+
 
 
 
 
 /*
  
+ for (var i = 0; i <showSingle.length; i++) {
+
+  showSingle[i].classList.remove('match')
+
 
 function restart(){
 
