@@ -79,7 +79,8 @@ function flipCard(e){
 
   let classChecking = event.target.className
 	
-if (matchCards.contains(classChecking)){
+if (matchCards.includes(classChecking)){
+
 
 } else {
   event.target.classList.toggle('match')
@@ -103,7 +104,7 @@ openCards.push(oneCard[i].children[0].className)
 if (openCards[0]===openCards[1] && openCards.length>1){
   alert('GOOD MATCH')
  
-matchCards.push(openCards[0])
+matchCards.push(openCards)
 
 console.log(matchCards)
 
