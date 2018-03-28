@@ -18,6 +18,10 @@
 
   let moves = document.querySelector('.moves')
 
+  let showCard = document.querySelectorAll('.deck')
+
+  let showSingle = document.querySelectorAll('.deck .card')
+
 
 
    
@@ -47,7 +51,6 @@ function shuffle(array) {
 
 for (z=0; z<single.length; z++){
 
-
 // add each card's HTML to the page
 
   single[z].classList.add(cards[z])
@@ -55,11 +58,6 @@ for (z=0; z<single.length; z++){
   let solution = (single[z].className)
     
 }
-
-
-let showCard = document.querySelectorAll('.deck')
-
-let showSingle = document.querySelectorAll('.deck .card')
 
 	//set up the event listener for a card. If a card is clicked://
 
@@ -76,12 +74,18 @@ let oneCard= document.querySelectorAll('.card')
 
 
 function flipCard(e){ 
-	
-event.target.classList.toggle('match')
 
+  let matchCards=[]
+
+  let classChecking = event.target.className
+	
+if (matchCards.contains(classChecking)){
+
+} else {
+  event.target.classList.toggle('match')
+}
 
 let openCards=[]
-
 
 
 for (let i=0; i<oneCard.length; i++){
@@ -92,24 +96,22 @@ if (oneCard[i].classList.contains("match")){
 openCards.push(oneCard[i].children[0].className)
 }
 
-
-
-
-
 }
-
-
-
-
 
 // Matching 2 cards
 
 if (openCards[0]===openCards[1] && openCards.length>1){
   alert('GOOD MATCH')
+ 
+matchCards.push(openCards[0])
+
+console.log(matchCards)
 
  setTimeout(function(){
 
  }, 2500)
+
+
 
 
 
@@ -125,6 +127,9 @@ if (openCards[0]===openCards[1] && openCards.length>1){
  for (var i = 0; i <showSingle.length; i++) {
 
   showSingle[i].classList.remove('match')
+
+
+
 
 
 // Remove one Star
