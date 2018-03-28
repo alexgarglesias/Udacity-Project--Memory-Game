@@ -2,157 +2,128 @@
 
  // Create a list that holds all of your cards
 
- let cards = ["fa-diamond","fa-paper-plane-o", "fa-bolt", "fa-cube", "fa-anchor", 
+let cards = ["fa-diamond","fa-paper-plane-o", "fa-bolt", "fa-cube", "fa-anchor", 
   "fa-leaf", "fa-bicycle", "fa-bomb","fa-diamond","fa-paper-plane-o","fa-bolt","fa-cube",
-  "fa-anchor","fa-leaf","fa-bicycle","fa-bomb"]
+  "fa-anchor","fa-leaf","fa-bicycle","fa-bomb"];
 
+const single = document.querySelectorAll('.card i');
 
+const classes = document.querySelectorAll('i .fa');
 
-  let numberOfCards = cards.length
+const stars = document.querySelectorAll('.stars .fa');
 
-  let single = document.querySelectorAll('.card i')
+const moves = document.querySelector('.moves');
 
-  let classes = document.querySelectorAll('i .fa')
+const showCard = document.querySelectorAll('.deck');
 
-  let stars = document.querySelectorAll('.stars .fa')
+const showSingle = document.querySelectorAll('.deck .card');
 
-  let moves = document.querySelector('.moves')
-
-  let showCard = document.querySelectorAll('.deck')
-
-  let showSingle = document.querySelectorAll('.deck .card')
-
-
-
-   
 	
 //Display the cards on the page
  //  - shuffle the list of cards using the provided "shuffle" method 
 
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+let currentIndex = array.length, temporaryValue, randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+    };
 
     return array
-    
-}
+    };
 
-  cards= shuffle(cards)
-
+cards= shuffle(cards);
 
 // loop through each card and create its HTML
 
 for (z=0; z<single.length; z++){
-
 // add each card's HTML to the page
+  single[z].classList.add(cards[z]);
 
-  single[z].classList.add(cards[z])
-
-  let solution = (single[z].className)
-    
-}
-
+const solution = (single[z].className);
+};
 	//set up the event listener for a card. If a card is clicked://
 
 for (var i = 0; i <showSingle.length; i++) {
 
   showSingle[i].addEventListener('click', flipCard, true);
-
-
-}
+};
 
 	//display the card's symbol (put this functionality in another function that you call from this one)//
 
-let oneCard= document.querySelectorAll('.card')
-
+const oneCard= document.querySelectorAll('.card');
 
 function flipCard(e){ 
 
-  let matchCards=[]
+let matchCards=[];
 
-  let classChecking = event.target.className
+let classChecking = event.target.className;
 	
 if (matchCards.includes(classChecking)){
 
-
 } else {
-  event.target.classList.toggle('match')
+  event.target.classList.toggle('match');
 }
 
-let openCards=[]
+let openCards=[];
 
 
 for (let i=0; i<oneCard.length; i++){
 
+  if (oneCard[i].classList.contains("match")){
 
-if (oneCard[i].classList.contains("match")){
-
-openCards.push(oneCard[i].children[0].className)
-}
-
-}
+    openCards.push(oneCard[i].children[0].className);
+};
+};
 
 // Matching 2 cards
 
 if (openCards[0]===openCards[1] && openCards.length>1){
-  alert('GOOD MATCH')
+  alert('GOOD MATCH');
  
-matchCards.push(openCards)
+  matchCards.push(openCards[0]);
+  matchCards.push(openCards[1]);
 
-console.log(matchCards)
+  openCards= [];
+
+console.log(matchCards);
 
  setTimeout(function(){
 
- }, 2500)
-
-
-
-
+ }, 2500);
 
 //Not matching
 
 }else if (openCards[0]!==openCards[1] && openCards.length===2){
 
-  setTimeout(function(){
- alert('Wrong match')
-  },1000)
+   setTimeout(function(){
+   alert('Wrong match');
+  },1000);
 
  setTimeout(function(){
  for (var i = 0; i <showSingle.length; i++) {
 
-  showSingle[i].classList.remove('match')
-
-
-
-
+  showSingle[i].classList.remove('match');
 
 // Remove one Star
 
   for (var z = 0; z <stars.length; z++) {
-
-
-   stars[0].classList.remove('fa-star')
+   stars[0].classList.remove('fa-star');
 
 
 // decrease moves
 
-moves.textContent = 2
+moves.textContent = 2;
 
-}
-}
-  },2000)
+};
+};
+  },2000);
 
-
-}
-
-}
+};
+};
 
 
 
